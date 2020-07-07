@@ -9,14 +9,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// require("./routes/apiroutes")(app);
-// require("./routes/htmlroutes")(app);
+require("./routes/apiroutes")(app);
+require("./routes/htmlroutes")(app);
 
 // var pathway = path.join(__dirname, 'db', 'db.json');
 
 // var userData = fs.readFileSync(pathway, 'utf-8');
 // var userNotes = JSON.parse(userData);
-notesArray = [];
+userArray = [];
 
 
 app.get("/", function(req, res) {
@@ -38,7 +38,7 @@ console.log("Testing Routes");
       if (err) {
         console.log(err);
       }
-      db = JSON.parse(data);
+      const db = JSON.parse(data);
       const addNote = req.body;
       db.push(addNote);
       const dbIndex = db.map(function(note,index){
@@ -55,29 +55,45 @@ console.log(db);
     });
   });
 
+  app.delete('/api/notes/:id', (req, res) => {
+    const dbId = req.params.id;
+  
+    fs.readFile(__dirname + "/db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
+      
+      const db = JSON.parse(data);
+    //   const output = jsonInput.filter(note => note.id !== parseInt(noteId));
+  
+      fs.writeFile(__dirname + "/db/db.json", JSON.stringify(results), (err, data) => {
+        if (err) throw err;
+        res.json(db);
+      });
+    });
+  });
 
-  app.delete("/api/notes/:id", function (req, res) {
-    console.log("Testing Routes");
-        fs.readFile("./db/db.json", "utf8", (err, data) => {
-          if (err) {
-            console.log(err);
-          }
-          db = JSON.parse(data);
-      const addNote = req.body;
-      db.push(addNote);
-      const dbIndex = db.map(function(note,index){
-          note.id=index;
-          return note;
-        });
-          fs.writeFile("./db/db.json", JSON.stringify(dbIndex), "utf8", (err) => {
-            if (err) {
-              return res.send("Error");
-            }
-            res.json(NewDb);
+//   app.delete("/api/notes/:id", function (req, res) {
+//     console.log("Testing Routes");
+//         fs.readFile("./db/db.json", "utf8", (err, data) => {
+//           if (err) {
+//             console.log(err);
+//           }
+//          const db = JSON.parse(data);
+//       const addNote = req.body;
+//       db.push(addNote);
+//       const dbIndex = db.map(function(note,index){
+//           note.id=index;
+//           return note;
+//         });
+//         const noteData = userArray.filter((note) => note.id != req.params.id);
+//           fs.writeFile("./db/db.json", JSON.stringify(noteData), "utf8", (err) => {
+//             if (err) {
+//               return res.send("Error");
+//             }
+//             res.json(noted);
           
-        });
-      });
-      });
+//         });
+//       });
+//       });
 
 
 //   app.post("/notes", function(req, res) {
