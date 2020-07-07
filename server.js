@@ -12,12 +12,7 @@ app.use(express.static("public"));
 require("./routes/apiroutes")(app);
 require("./routes/htmlroutes")(app);
 
-// var pathway = path.join(__dirname, 'db', 'db.json');
-
-// var userData = fs.readFileSync(pathway, 'utf-8');
-// var userNotes = JSON.parse(userData);
 userArray = [];
-
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"))
@@ -70,61 +65,6 @@ console.log(db);
       });
     });
   });
-
-//   app.delete("/api/notes/:id", function (req, res) {
-//     console.log("Testing Routes");
-//         fs.readFile("./db/db.json", "utf8", (err, data) => {
-//           if (err) {
-//             console.log(err);
-//           }
-//          const db = JSON.parse(data);
-//       const addNote = req.body;
-//       db.push(addNote);
-//       const dbIndex = db.map(function(note,index){
-//           note.id=index;
-//           return note;
-//         });
-//         const noteData = userArray.filter((note) => note.id != req.params.id);
-//           fs.writeFile("./db/db.json", JSON.stringify(noteData), "utf8", (err) => {
-//             if (err) {
-//               return res.send("Error");
-//             }
-//             res.json(noted);
-          
-//         });
-//       });
-//       });
-
-
-//   app.post("/notes", function(req, res) {
-//     fs.readFile("./db/db.json"), function (err,data) {
-//         if(err) {
-//             console.log(err);
-//         }
-//   db=JSON.parse(data);
-//   const addNote = req.body;
-//   userArray.push(addNote);
-//   res.json(addNote);
-
-
-//     fs.writeFileSync(db, JSON.stringify(db), "utf8", function(err)  {
-//         if(err) {
-//             console.log(err);
-//         }
-//     res.json(addNote);
-// });
-// });
-// });
-// app.get("/api/notes", function (req, res) {
-//         res.json(notesArray);
-//       });
-
-// app.get('/api/notes', function(req,res) {
-//     res.json(db);
-// });
-
-
-
 
 app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
         

@@ -1,5 +1,4 @@
-# 10-Homework-TemplateEngine-EmployeeSummary
-  # README Homework Generator
+  # README Note Taker
   ## Description
   The purpose of this application is to generate a Employee template through a series of prompts.
   ## Table of Contents
@@ -14,14 +13,13 @@
   ## Installation
   First download node.js at https://nodejs.org/en/ and clone the repository found at:
 
-  https://github.com/brw1820/10-Homework-TemplateEngine-EmployeeSummary
+  https://github.com/brw1820/11-note-taker
 
   ## Usage
-  This repository contains a a template engine for an employee summary generator using node.js.  Open app.js in your source code editor such as Visual Studio Code or iTerm and install 'inquirer' into the folder with the command 'npm install inquirer'. Open your terminal and proceed to input the command 'node app.js'. Complete the prompts, and you will be given your generated employee template.
-  
-  Link to video: https://drive.google.com/file/d/1-lAIMnoUHUItuY3FAr9BgBw8fXcO3x0O/view?usp=sharing
+  This repository contains a note taker program using node.js.  First, ensure you have nodemon and express installed on your computer.  Open server.js in your source code editor such as Visual Studio Code or iTerm by running "node server.js".
 
- ![gif](./Assets/gif.gif)
+
+ ![gif](.Assets/gif1.gif)
 
   ## License
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
